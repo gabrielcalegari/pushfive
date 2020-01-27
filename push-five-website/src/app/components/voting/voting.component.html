@@ -1,0 +1,52 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title mb-3">Your five favorite songs will appear here</h5>
+    <div class="card-subtitle mb-3">Drag and drop to sort them!</div>
+
+    <div class="row row-cols-1 row-cols-md-5" cdkDropList (cdkDropListDropped)="drop($event)"
+      [cdkDropListOrientation]="'horizontal'">
+      <div *ngFor="let item of voting.items; index as i" class="col mb-4" cdkDrag>
+        <div *ngIf="item.song == null" class="card border-dotted h-100">
+          <div class="card-body">
+            <div class="card-text text-center">Song</div>
+          </div>
+        </div>
+        <div *ngIf="item.song != null" class="card h-100">
+          <div class="card-body">
+            <h6 class="card-title">{{ item.song.name }}</h6>
+            <p class="card-text">
+              <b>Artist:</b> {{ item.song.artist }}<br />
+              <b>Genre:</b> {{ item.song.genre }}
+            </p>
+          </div>
+          <div class="card-footer">
+            <button type="button" class="btn btn-link" (click)="removeVote(item.song)">
+              <i class="far fa-trash-alt"></i>
+            </button>
+          </div>
+        </div>
+        <div class="text-muted text-center">
+          <b>{{ i + 1 }}</b>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title mb-3">Who are you?</h5>
+    <div class="row">
+      <div class="col">
+        <input type="text" name="name" id="name" [(ngModel)]="voting.name" class="form-control"
+          placeholder="Name" required />
+      </div>
+      <div class="col">
+        <input type="text" name="email" [(ngModel)]="voting.email" class="form-control"
+          placeholder="Email" required />
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="btn btn-lg btn-primary" (click)="vote()" title="Vote">Vote</button>

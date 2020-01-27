@@ -1,0 +1,47 @@
+$body-bg: #f1f7f9;
+$body-color: #586673;
+
+$theme-colors: (
+  "primary": #1ed760,
+  "secondary": #24292e
+);
+
+@import "~bootstrap/scss/bootstrap.scss";
+
+@import '~ngx-toastr/toastr-bs4-alert';
+
+.pf-header-fixed-top {
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+
+  @include media-breakpoint-up(lg) {
+      padding-bottom: 60px;
+  }
+
+  @include media-breakpoint-down(lg) {
+      height: 100%;
+  }
+}
+
+.pf-main-content {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  flex: 1;
+
+  @include media-breakpoint-down(lg) {
+      padding-top: 3rem;
+      padding-bottom: 3rem
+  }
+}
+
+.card-header .card-title {
+  display: inline-block;
+  margin-bottom: 0;
+  font-size: 1rem;
+  color: #586673
+}
+
+.border-dotted {
+  border-style: dotted;
+}

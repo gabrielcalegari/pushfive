@@ -1,0 +1,33 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title mb-3">Browse songs</h5>
+    <div *ngIf="songsResult">
+      <div class="row row-cols-1 row-cols-md-5">
+        <div *ngFor="let song of songsResult.songs" class="col mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h6 class="card-title">{{ song.name }}</h6>
+              <p class="card-text">
+                <b>Artist:</b> {{ song.artist }}<br />
+                <b>Genre:</b> {{ song.genre }}
+              </p>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-link" (click)="songChoosedEvent.emit(song)">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <pagination
+          [totalItems]="songsResult.count"
+          [itemsPerPage]="songsResult.pageSize"
+          (pageChanged)="pageChanged($event)"
+        >
+        </pagination>
+      </div>
+    </div>
+  </div>
+</div>
