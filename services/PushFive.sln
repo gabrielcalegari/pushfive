@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{D10F39E2-D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PushFive.Core", "Core\PushFive.Core\PushFive.Core.csproj", "{E4539930-4168-490C-BE4B-D35817AA61A7}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PushFive.Voting.Data", "Voting\PushFive.Voting.Data\PushFive.Voting.Data.csproj", "{C04F335B-394B-41E0-8D0C-0D19EB0ADCEC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{E4539930-4168-490C-BE4B-D35817AA61A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4539930-4168-490C-BE4B-D35817AA61A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4539930-4168-490C-BE4B-D35817AA61A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C04F335B-394B-41E0-8D0C-0D19EB0ADCEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C04F335B-394B-41E0-8D0C-0D19EB0ADCEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C04F335B-394B-41E0-8D0C-0D19EB0ADCEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C04F335B-394B-41E0-8D0C-0D19EB0ADCEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{2EDE4545-0667-4C75-8E0E-170EABE0DA1D} = {E406BED2-0EEF-47E5-A59F-CDC579D4A8C2}
 		{A9A7A56B-18B3-4B42-BEF4-855F25BC687A} = {4E464AF5-8F86-42CD-9F8C-CDE226A9DCB8}
 		{E4539930-4168-490C-BE4B-D35817AA61A7} = {D10F39E2-DD16-432F-9D4C-EAEBB0757980}
+		{C04F335B-394B-41E0-8D0C-0D19EB0ADCEC} = {4E464AF5-8F86-42CD-9F8C-CDE226A9DCB8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0297FAB6-2034-44DC-859E-D9B907F19FB2}

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PushFive.Catalog.Domain.Models;
 using PushFive.Catalog.Domain.Repository;
+using PushFive.Core.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace PushFive.Catalog.Data.Repository
     public class SongRepository : ISongRepository
     {
         private readonly CatalogContext catalogContext;
+        public IUnitOfWork UnitOfWork => catalogContext;
 
         public SongRepository(CatalogContext catalogContext)
         {

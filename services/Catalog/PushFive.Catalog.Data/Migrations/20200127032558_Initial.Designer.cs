@@ -10,7 +10,7 @@ using PushFive.Catalog.Data;
 namespace PushFive.Catalog.Data.Migrations
 {
     [DbContext(typeof(CatalogContext))]
-    [Migration("20200126020028_Initial")]
+    [Migration("20200127032558_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,9 +59,6 @@ namespace PushFive.Catalog.Data.Migrations
 
                     b.Property<Guid>("ArtistId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Code")
-                        .HasColumnType("varchar(64)");
 
                     b.Property<Guid>("GenreId")
                         .HasColumnType("uniqueidentifier");

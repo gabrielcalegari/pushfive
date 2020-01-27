@@ -53,7 +53,7 @@ namespace PushFive.Catalog.Data
             {
                 var artist = artists.Single(a => a.Name == s.Artists);
                 var genre = genres.Single(g => g.Name == s.Genre);
-                return new Song(s.Id, s.Name, artist.Id, genre.Id);
+                return new Song(s.Name, artist.Id, genre.Id);
             });
 
             context.Songs.AddRange(songs);
@@ -76,7 +76,6 @@ namespace PushFive.Catalog.Data
 
         private class SongDto
         {
-            public string Id { get; set; }
             public string Name { get; set; }
             public string Artists { get; set; }
             public string Genre { get; set; }

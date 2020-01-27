@@ -5,16 +5,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { DragDropModule} from '@angular/cdk/drag-drop';
 import { FormsModule } from '@angular/forms';
-
-
+import { RouterModule } from '@angular/router';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
-import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { VotingComponent } from './components/voting/voting.component';
-import { RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { SuccessComponent } from './components/success/success.component';
 

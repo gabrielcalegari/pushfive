@@ -1,11 +1,12 @@
 ﻿using PushFive.Catalog.Domain.Models;
+using PushFive.Core.Data;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace PushFive.Catalog.Domain.Repository
 {
-    public interface ISongRepository : IDisposable
+    public interface ISongRepository : IRepository<Song>
     {
         Task<Song> GetSongById(Guid id);
 

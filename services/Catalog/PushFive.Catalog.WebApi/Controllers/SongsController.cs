@@ -24,14 +24,14 @@ namespace PushFive.Catalog.WebApi.Controllers
             songsGet.PageIndex = songsGet.PageIndex > 0 ? songsGet.PageIndex : 1;
             songsGet.PageSize = songsGet.PageSize <= 20 && songsGet.PageSize > 0 ? songsGet.PageSize : 20;
 
+            // TODO: It is better to use AutoMapper.
             var songs = await songRepository.GetSongs(songsGet.PageIndex, songsGet.PageSize);
             var songsDto = songs.Select(song => new SongDto
             {
                 Id = song.Id,
-                Code = song.Code,
                 Name = song.Name,
-                Artist = song.Artist.Name,
-                Genre = song.Genre.Name
+                Artist = new ArtistDto { Id = song.Artist.Id, Name = song.Artist.Name },
+                Genre = new GenreDto { Id = song.Genre.Id, Name = song.Genre.Name }
             });
 
             var countSongs = await songRepository.CountSongs();

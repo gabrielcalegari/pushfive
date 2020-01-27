@@ -60,7 +60,6 @@ namespace PushFive.Catalog.WebApi
                 c.RoutePrefix = string.Empty;
             });
 
-
             // TODO: Fix to origin from angular app
             app.UseCors(options => options.AllowAnyOrigin()
                                    .AllowAnyHeader()

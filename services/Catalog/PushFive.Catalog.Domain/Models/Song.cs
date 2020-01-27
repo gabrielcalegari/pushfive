@@ -5,7 +5,6 @@ namespace PushFive.Catalog.Domain.Models
 {
     public class Song : Entity, IAggregateRoot
     {
-        public string Code { get; private set; }
         public string Name { get; private set; }
 
         public Artist Artist { get; private set; }
@@ -16,9 +15,8 @@ namespace PushFive.Catalog.Domain.Models
 
         public Song() { }
 
-        public Song(string code, string name, Guid artistId, Guid genreId)
+        public Song(string name, Guid artistId, Guid genreId)
         {
-            Code = code;
             Name = name;
             ArtistId = artistId;
             GenreId = genreId;

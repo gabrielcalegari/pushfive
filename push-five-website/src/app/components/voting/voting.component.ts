@@ -4,6 +4,7 @@ import { Song } from 'src/app/models/song';
 import { ToastrService } from 'ngx-toastr';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import { Router } from '@angular/router';
+import { VotingService } from 'src/app/services/voting.service';
 
 @Component({
   selector: 'app-voting',
@@ -14,15 +15,22 @@ export class VotingComponent implements OnInit {
 
   public voting: Voting;
 
-  constructor(private toastr: ToastrService, private router: Router) {
+  constructor(
+    private toastr: ToastrService,
+    private votingService: VotingService,
+    private router: Router) {
     this.voting = new Voting();
   }
 
   vote() {
     if (this.validate()) {
-      // TODO: Call service to save vote
-
-      this.router.navigate(['/success']);
+      this.votingService.addVote(this.voting)
+        .subscribe((voting) => {
+          if (voting != null) {
+            this.router.navigate(['/success']);
+          }
+      }, (error) => {
+      });
     }
   }
 

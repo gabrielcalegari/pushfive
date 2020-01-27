@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace PushFive.Catalog.WebApi.Dtos
 {
@@ -21,27 +19,5 @@ namespace PushFive.Catalog.WebApi.Dtos
             Count = count;
             Songs = songs;
         }
-    }
-
-    public class SongsGet
-    {
-        [FromQuery]
-        public int PageIndex { get; set; }
-
-        [FromQuery]
-        public int PageSize { get; set; }
-    }
-
-    public class SongDto
-    {
-        public Guid Id { get; set; }
-
-        public string Code { get; set; }
-
-        public string Name { get; set; }
-
-        public string Artist { get; set; }
-
-        public string Genre { get; set; }
     }
 }

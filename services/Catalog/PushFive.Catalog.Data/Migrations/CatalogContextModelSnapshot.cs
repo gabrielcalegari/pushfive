@@ -58,9 +58,6 @@ namespace PushFive.Catalog.Data.Migrations
                     b.Property<Guid>("ArtistId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Code")
-                        .HasColumnType("varchar(64)");
-
                     b.Property<Guid>("GenreId")
                         .HasColumnType("uniqueidentifier");
 

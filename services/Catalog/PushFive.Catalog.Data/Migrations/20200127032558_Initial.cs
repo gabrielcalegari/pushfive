@@ -36,7 +36,6 @@ namespace PushFive.Catalog.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Code = table.Column<string>(type: "varchar(64)", nullable: true),
                     Name = table.Column<string>(type: "varchar(64)", nullable: false),
                     ArtistId = table.Column<Guid>(nullable: false),
                     GenreId = table.Column<Guid>(nullable: false)
