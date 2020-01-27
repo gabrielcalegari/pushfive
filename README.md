@@ -1,6 +1,6 @@
 # PushFive
 
-PushFive is an example web application with voting system. It shows a catalog of songs, and a user has to choose 5 as his favorite.
+PushFive is an example web application with voting system. It shows a catalog of songs, and a user has to choose 5 favorite songs.
 
 ## Architecture
 
