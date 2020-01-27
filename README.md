@@ -12,7 +12,7 @@ PushFive is composed of 1 website and 2 microsservices:
 
 ## Domain modeling
 
-![Domain modeling of each one microsservice](https://imagizer.imageshack.com/img924/3061/2lU5FO.png)
+![Domain modeling of each one microsservice](https://imagizer.imageshack.com/img921/662/ylagTi.png)
 
 ## References
 I used some references to build this web app:
