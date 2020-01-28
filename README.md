@@ -4,13 +4,16 @@ PushFive is an example web application with voting system. It shows a catalog of
 
 ## Architecture
 
-PushFive is composed of 1 website and 2 microsservices:
+PushFive is composed of 2 websites and 2 microsservices:
 
-- Website: presentation layer
+- PushFive.Voting.Website: presentation layer for voting
+- PushFive.Result.Website: presentation layer for voting result
 - PushFive.Catalog.WebApi: catalog service
 - PushFive.Voting.WebApi: voting service
 
 Each one of the microsservices has own SQL Server database.
+
+![Microsservice architecture](https://imagizer.imageshack.com/img922/8066/Y0VNMn.png)
 
 ## Domain modeling
 
