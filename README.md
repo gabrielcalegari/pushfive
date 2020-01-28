@@ -18,7 +18,7 @@ Each one of the microsservices has own SQL Server database.
 
 ## How to run?
 
-PushFive is containerized through Docker. Assure you have Docker installed in your machine and follow the steps:
+PushFive is containerized through Docker. Ensure you have Docker installed in your machine and follow the steps:
 
 1. Clone the repository
 1. Open the root folder (where is located docker-compose.yml) via console 
