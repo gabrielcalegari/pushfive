@@ -1,0 +1,53 @@
+version: '3.7'
+
+services:
+
+  db:
+    image: microsoft/mssql-server-linux:2017-latest
+    ports:
+      - "1401:1433"
+    environment: 
+      SA_PASSWORD: "PushFIVE123"
+      ACCEPT_EULA: "Y"
+    networks: 
+      - pushfivenetwork
+  
+  pushfive.catalog.webapi:
+    build: 
+      context: .
+      dockerfile: src/Services/Catalog/PushFive.Catalog.WebApi/Dockerfile
+    ports:
+      - "50010:80"
+    depends_on: 
+      - "db"
+    networks: 
+      - pushfivenetwork
+
+  pushfive.voting.webapi:
+    build:
+      context: .
+      dockerfile: src/Services/Voting/PushFive.Voting.WebApi/Dockerfile
+    ports:
+      - "50020:80"
+    depends_on: 
+      - "db"
+    networks: 
+      - pushfivenetwork
+
+  pushfive.voting.website:
+    build:
+      context: .
+      dockerfile: src/Websites/push-five-vote/Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - pushfive.catalog.webapi
+      - pushfive.voting.webapi
+    networks:
+      - pushfivenetwork
+    
+networks:
+  pushfivenetwork:
+    driver: bridge
+
+
