@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using PushFive.Voting.Domain.Command;
 using PushFive.Voting.WebApi.Dtos;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PushFive.Voting.WebApi.AutoMapper
 {

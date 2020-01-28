@@ -45,7 +45,19 @@ services:
       - pushfive.voting.webapi
     networks:
       - pushfivenetwork
-    
+
+  pushfive.result.website:
+    build: 
+      context: .
+      dockerfile: src/Websites/push-five-result/Dockerfile
+    ports:
+      - "8081:80"
+    depends_on:
+      - pushfive.catalog.webapi
+      - pushfive.voting.webapi
+    networks:
+        - pushfivenetwork
+
 networks:
   pushfivenetwork:
     driver: bridge

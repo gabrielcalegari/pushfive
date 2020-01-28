@@ -10,6 +10,8 @@ namespace PushFive.Catalog.Domain.Repository
     {
         Task<Song> GetSongById(Guid id);
 
+        Task<IEnumerable<Song>> GetSongsByIds(params Guid[] ids);
+
         Task<IEnumerable<Song>> GetSongs(int page, int size);
 
         Task<long> CountSongs();

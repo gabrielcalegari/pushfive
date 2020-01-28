@@ -39,6 +39,20 @@ namespace PushFive.Catalog.Data.Repository
             return await catalogContext.Songs.FindAsync(id);
         }
 
+        public async Task<IEnumerable<Song>> GetSongsByIds(params Guid[] ids)
+        {
+            if (ids.Length > 20)
+                throw new NotSupportedException("Maximum number of ids are 20");
+
+            var songIdList = ids.ToList();
+
+            return await catalogContext.Songs
+                .Where(song => songIdList.Contains(song.Id))
+                .Include(s => s.Artist)
+                .Include(s => s.Genre)
+                .ToListAsync();
+        }
+
         public void Dispose()
         {
             catalogContext?.Dispose();

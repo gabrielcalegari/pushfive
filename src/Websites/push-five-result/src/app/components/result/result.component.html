@@ -1,0 +1,24 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title mb-3">Top 5 songs</h5>
+    <div *ngIf="result != null || result.songs.length > 0">
+      <div class="row row-cols-1 row-cols-md-5">
+        <div *ngFor="let item of result.songs; index as i" class="col mb-4">
+          <div *ngIf="result.songs.length > 0" class="card h-100">
+            <div class="card-body">
+              <h6 class="card-title">{{ getSong(item.id).name }}</h6>
+              <p class="card-text">
+                <b>Artist:</b> {{ getSong(item.id).artist.name }}<br />
+                <b>Genre:</b> {{ getSong(item.id).genre.name }}
+              </p>
+            </div>
+          </div>
+          <div class="text-muted text-center">
+            <b>{{ i + 1 }}</b>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h6 *ngIf="result == null || result.songs.length == 0">No votes yet!</h6>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+.pf-footer {
+  margin-top: 0;
+}
+
+.pf-footer-inner {
+  padding: 1rem 0;
+  border-top: 1px solid #dbe3ea;
+}
+
+.pf-social-icon {
+  display: block;
+  width: 35px;
+  height: 35px;
+  line-height: 32px;
+  border-radius: 50%;
+  border: 1px solid #94a0ae;
+  font-size: 16px;
+  color: #94a0ae;
+  text-align: center;
+
+  &:focus,
+  &:hover {
+    border-color: #94a0ae;
+    background-color: #94a0ae;
+    color: #fff;
+    text-decoration: none
+  }
+}
+
+.pf-social-icon-linkedin:focus,
+.pf-social-icon-linkedin:hover {
+  border-color: #0077b5;
+  background-color: #0077b5;
+}
+
+.pf-social-icon-github:focus,
+.pf-social-icon-github:hover {
+  border-color: #24292e;
+  background-color: #24292e;
+}

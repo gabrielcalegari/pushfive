@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PushFive.Voting.Domain.Repository
 {
@@ -7,5 +9,7 @@ namespace PushFive.Voting.Domain.Repository
         Task AddVoting(Models.Voting voting);
 
         Domain.Models.Voting GetByVoterEmail(string email);
+
+        Task<IEnumerable<Guid>> GetFiveMostVotedSongs();
     }
 }

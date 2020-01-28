@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -37,6 +38,9 @@ namespace PushFive.Catalog.WebApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PushFive.Catalog", Version = "v1" });
             });
+
+            // Enable AutoMapper
+            services.AddAutoMapper(typeof(Startup));
 
             var catalogDataConfiguration = new CatalogDataConfiguration();
             Configuration.Bind("CatalogDataConfiguration", catalogDataConfiguration);

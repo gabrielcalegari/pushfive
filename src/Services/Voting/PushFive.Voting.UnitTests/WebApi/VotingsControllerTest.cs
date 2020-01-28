@@ -4,8 +4,10 @@ using Moq;
 using PushFive.Core.Communication;
 using PushFive.Core.Messages;
 using PushFive.Voting.Domain.Command;
+using PushFive.Voting.Domain.Repository;
 using PushFive.Voting.WebApi.Controllers;
 using PushFive.Voting.WebApi.Dtos;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
@@ -17,12 +19,18 @@ namespace PushFive.Voting.UnitTests.WebApi
         private readonly Mock<IMediatorHandler> mediatorHandlerMock;
         private readonly Mock<IMapper> mapperMock;
         private readonly Mock<DomainNotificationHandler> domainNotificationHandlerMock;
+        private readonly Mock<IVotingRepository> votingRepositoryMock;
+
+        private readonly VotingsController votingsController;
 
         public VotingsControllerTest()
         {
             mediatorHandlerMock = new Mock<IMediatorHandler>();
             mapperMock = new Mock<IMapper>();
             domainNotificationHandlerMock = new Mock<DomainNotificationHandler>();
+            votingRepositoryMock = new Mock<IVotingRepository>();
+
+            votingsController = new VotingsController(mediatorHandlerMock.Object, mapperMock.Object, domainNotificationHandlerMock.Object, votingRepositoryMock.Object);
         }
 
         [Fact]
@@ -38,7 +46,6 @@ namespace PushFive.Voting.UnitTests.WebApi
                  .Returns(Task.FromResult(true));
 
             //Act
-            var votingsController = new VotingsController(mediatorHandlerMock.Object, mapperMock.Object, domainNotificationHandlerMock.Object);
             var actionResult = await votingsController.PostVoting(new VotingPost());
 
             //Assert
@@ -59,11 +66,23 @@ namespace PushFive.Voting.UnitTests.WebApi
                  .Returns(Task.FromResult(true));
 
             //Act
-            var votingsController = new VotingsController(mediatorHandlerMock.Object, mapperMock.Object, domainNotificationHandlerMock.Object);
             var actionResult = await votingsController.PostVoting(new VotingPost());
 
             //Assert
             Assert.Equal((actionResult as BadRequestObjectResult).StatusCode, (int)System.Net.HttpStatusCode.BadRequest);
+        }
+
+        [Fact]
+        public async Task GetVotingResult_Success()
+        {
+            //Arrange
+            votingRepositoryMock.Setup(x => x.GetFiveMostVotedSongs()).Returns(Task.FromResult(new List<Guid>() as IEnumerable<Guid>));
+
+            //Act
+            var actionResult = await votingsController.GetVotingResult();
+
+            //Assert
+            Assert.Equal((actionResult as OkObjectResult).StatusCode, (int)System.Net.HttpStatusCode.OK);
         }
     }
 }

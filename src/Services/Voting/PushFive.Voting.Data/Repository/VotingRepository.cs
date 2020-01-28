@@ -2,6 +2,7 @@
 using PushFive.Core.Data;
 using PushFive.Voting.Domain.Repository;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -27,6 +28,16 @@ namespace PushFive.Voting.Data.Repository
         {
             return votingContext.Votings.AsNoTracking()
                     .SingleOrDefault(voting => voting.Voter.Email == email);
+        }
+
+        public async Task<IEnumerable<Guid>> GetFiveMostVotedSongs()
+        {
+            return await votingContext.VotingItems
+                 .GroupBy(v => v.SongId)
+                 .OrderBy(g => g.Count())
+                 .Select(g => g.Key)
+                 .Take(5)
+                 .ToListAsync();
         }
 
         public void Dispose()
