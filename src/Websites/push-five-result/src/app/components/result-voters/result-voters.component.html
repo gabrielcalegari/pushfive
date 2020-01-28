@@ -1,0 +1,34 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title mb-3">Voter's hit</h5>
+    <div *ngIf="voterGetResult">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Hits</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let voter of voterGetResult.voters">
+              <td>{{ voter.name }}</td>
+              <td>{{ voter.email }}</td>
+              <td>{{ voter.hit }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <pagination
+          [totalItems]="voterGetResult.count"
+          [itemsPerPage]="voterGetResult.pageSize"
+          (pageChanged)="pageChanged($event)"
+        >
+        </pagination>
+      </div>
+    </div>
+    <div *ngIf="voterGetResult == null">
+      <h6 class="text-center">No voters yet!</h6>
+    </div>
+  </div>
+</div>

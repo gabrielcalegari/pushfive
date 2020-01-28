@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PushFive.Core.Data;
+using PushFive.Voting.Domain.Models;
 using PushFive.Voting.Domain.Repository;
 using System;
 using System.Collections.Generic;
@@ -32,12 +33,27 @@ namespace PushFive.Voting.Data.Repository
 
         public async Task<IEnumerable<Guid>> GetFiveMostVotedSongs()
         {
-            return await votingContext.VotingItems
+            return await votingContext.VotingItems.AsNoTracking()
                  .GroupBy(v => v.SongId)
                  .OrderBy(g => g.Count())
                  .Select(g => g.Key)
                  .Take(5)
                  .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Domain.Models.Voting>> GetVotings(int pageIndex, int pageSize)
+        {
+            return await votingContext.Votings.AsNoTracking()
+                .Include(v => v.Voter)
+                .Include(v => v.VotingItems)
+                .Skip((pageIndex - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+        }
+
+        public async Task<long> GetVotingsCount()
+        {
+            return await votingContext.Votings.LongCountAsync();
         }
 
         public void Dispose()

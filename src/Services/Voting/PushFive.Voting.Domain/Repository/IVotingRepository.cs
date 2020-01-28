@@ -8,8 +8,12 @@ namespace PushFive.Voting.Domain.Repository
     {
         Task AddVoting(Models.Voting voting);
 
-        Domain.Models.Voting GetByVoterEmail(string email);
+        Models.Voting GetByVoterEmail(string email);
 
         Task<IEnumerable<Guid>> GetFiveMostVotedSongs();
+
+        Task<IEnumerable<Models.Voting>> GetVotings(int pageIndex, int pageSize);
+
+        Task<long> GetVotingsCount();
     }
 }

@@ -68,5 +68,29 @@ namespace PushFive.Voting.WebApi.Controllers
             var result = new VotingGetResult { Songs = songsDto };
             return Ok(result);
         }
+
+        [HttpGet("result/voters")]
+        [ProducesResponseType(typeof(IEnumerable<VotersGetResult>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetVotersResult([FromQuery] VotersGet votersGet)
+        {
+            var votings = await votingRepository.GetVotings(votersGet.PageIndex, votersGet.PageSize);
+            var votingsCount = await votingRepository.GetVotingsCount();
+            var songs = (await votingRepository.GetFiveMostVotedSongs()).ToArray();
+
+            var votersDtos = votings.Select(voting =>
+            {
+                int hits = voting.VotingItems.Count(i => songs.Contains(i.SongId));
+                return new VoterDto
+                {
+                    Name = voting.Voter.Name,
+                    Email = voting.Voter.Email,
+                    Hit = hits
+                };
+            });
+
+            var result = new VotersGetResult(votersGet.PageIndex, votersGet.PageSize, votingsCount, votersDtos);
+            return Ok(result);
+        }
     }
 }

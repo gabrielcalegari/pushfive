@@ -6,11 +6,11 @@ import { Song } from 'src/app/models/song';
 import { Guid } from 'guid-typescript';
 
 @Component({
-  selector: 'app-result',
-  templateUrl: './result.component.html',
-  styleUrls: ['./result.component.scss']
+  selector: 'app-result-songs',
+  templateUrl: './result.songs.component.html',
+  styleUrls: ['./result.songs.component.scss']
 })
-export class ResultComponent implements OnInit {
+export class ResultSongsComponent implements OnInit {
 
   public result: VotingGetResult;
   public songs: Song[];

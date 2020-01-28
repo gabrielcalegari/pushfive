@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 namespace PushFive.Catalog.WebApi.Controllers
 {
     [Route("[controller]")]
+    [ApiController]
     public class SongsController : ControllerBase
     {
         private readonly ISongRepository songRepository;

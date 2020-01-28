@@ -7,7 +7,6 @@ import { DragDropModule} from '@angular/cdk/drag-drop';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
-import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -30,7 +29,6 @@ import { SuccessComponent } from './components/success/success.component';
    imports: [
       BrowserModule,
       HttpClientModule,
-      AppRoutingModule,
       BrowserAnimationsModule,
       PaginationModule.forRoot(),
       ToastrModule.forRoot(),
